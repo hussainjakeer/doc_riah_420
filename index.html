@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Doctors' Day 🩺💕</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            medical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            },
+            rose: {
+              50: '#fff5f7',
+              100: '#ffe4ec',
+              200: '#ffc9d9',
+              300: '#ff9ebb',
+              400: '#ff6b9d',
+              500: '#f43f7a',
+              600: '#e11d6a',
+            },
+            cream: '#fffaf5',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-slow': 'float 8s ease-in-out infinite',
+            'float-delay': 'float 6s ease-in-out 2s infinite',
+            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+            'fade-up': 'fadeUp 1s ease-out forwards',
+            'fade-up-delay': 'fadeUp 1s ease-out 0.4s forwards',
+            'fade-up-delay-2': 'fadeUp 1s ease-out 0.8s forwards',
+            'heartbeat': 'heartbeat 1.4s ease-in-out infinite',
+            'spin-slow': 'spin 25s linear infinite',
+            'sparkle': 'sparkle 2s ease-in-out infinite',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'glow': 'glow 2.5s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+              '50%': { transform: 'translateY(-18px) rotate(4deg)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.9', transform: 'scale(1.04)' },
+            },
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(36px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            heartbeat: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '14%': { transform: 'scale(1.12)' },
+              '28%': { transform: 'scale(1)' },
+              '42%': { transform: 'scale(1.12)' },
+              '70%': { transform: 'scale(1)' },
+            },
+            sparkle: {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.4', transform: 'scale(0.85)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            glow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(244, 63, 122, 0.3)' },
+              '50%': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.4)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #f0f9ff 0%, #fff5f7 40%, #e0f2fe 70%, #ffe4ec 100%);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #0284c7, #f43f7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-shine::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 60%
+      );
+      transform: rotate(45deg);
+      animation: shine 4s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0%, 100% { transform: translateX(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal-visible { opacity: 1; transform: translateY(0); }
+
+    .ecg-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: ecgDraw 3s ease-in-out infinite;
+    }
+    @keyframes ecgDraw {
+      0% { stroke-dashoffset: 1000; }
+      50% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -1000; }
+    }
+
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      z-index: 100;
+      animation: confettiFall 3s ease-out forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-cream text-slate-700 overflow-x-hidden">
+
+  <!-- Floating background elements -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <div class="absolute top-20 left-[8%] text-4xl opacity-20 animate-float">🩺</div>
+    <div class="absolute top-40 right-[12%] text-3xl opacity-25 animate-float-slow">💗</div>
+    <div class="absolute top-[60%] left-[5%] text-2xl opacity-20 animate-float-delay">✨</div>
+    <div class="absolute top-[30%] right-[6%] text-3xl opacity-15 animate-float">💙</div>
+    <div class="absolute bottom-32 left-[15%] text-3xl opacity-20 animate-float-slow">🌸</div>
+    <div class="absolute bottom-20 right-[18%] text-4xl opacity-15 animate-float-delay">⚕️</div>
+    <div class="absolute top-[15%] left-[45%] w-64 h-64 bg-medical-200/30 rounded-full blur-3xl animate-pulse-soft"></div>
+    <div class="absolute bottom-[20%] right-[30%] w-80 h-80 bg-rose-200/25 rounded-full blur-3xl animate-pulse-soft"></div>
+  </div>
+
+  <!-- Hero -->
+  <header class="relative min-h-screen hero-gradient flex flex-col items-center justify-center px-6 py-16 z-10">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="text-medical-600 font-semibold tracking-widest uppercase text-sm mb-4 opacity-0 animate-fade-up">
+        July 1 · National Doctors' Day
+      </p>
+
+      <div class="mb-6 opacity-0 animate-fade-up-delay">
+        <span class="inline-flex items-center justify-center w-24 h-24 rounded-full glass border border-white/80 shadow-lg animate-glow">
+          <span class="text-5xl animate-heartbeat">🩺</span>
+        </span>
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-slate-800 leading-tight mb-4 opacity-0 animate-fade-up-delay">
+        Happy Doctors' Day,<br>
+        <span class="text-gradient italic" id="heroName">Dr. Shaik Zuwayriah</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-600 max-w-xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-up-delay-2">
+        To the woman who heals the world with her hands<br class="hidden sm:block" />
+        and quietly heals my heart every single day.
+      </p>
+
+      <button
+        onclick="openWish()"
+        class="opacity-0 animate-fade-up-delay-2 group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-medical-500 to-rose-500 text-white font-semibold text-lg shadow-lg shadow-rose-300/40 hover:shadow-xl hover:shadow-medical-300/50 hover:scale-105 transition-all duration-300"
+      >
+        <span>click here for secret message</span>
+        <span class="group-hover:translate-x-1 transition-transform">💌</span>
+      </button>
+    </div>
+
+    <!-- ECG decoration -->
+    <div class="absolute bottom-8 left-0 right-0 opacity-30">
+      <svg viewBox="0 0 1200 60" class="w-full h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="ecg-line" d="M0 30 H200 L220 10 L240 50 L260 30 H400 L420 5 L440 55 L460 30 H600 L620 15 L640 45 L660 30 H800 L820 8 L840 52 L860 30 H1000 L1020 20 L1040 40 L1060 30 H1200" stroke="#f43f7a" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- <div class="absolute bottom-6 animate-bounce text-slate-400 text-sm">scroll down ↓</div> -->
+  </header>
+
+  <!-- Why she's amazing -->
+  <section class="relative z-10 py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 reveal-hidden">
+        <h2 class="font-display text-4xl sm:text-5xl text-slate-800 mb-3">
+          Why You're <span class="text-gradient">Extraordinary</span>
+        </h2>
+        <p class="text-slate-500 text-lg">Not just today — every single day.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal-hidden glass rounded-3xl p-8 border border-white/60 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-shine">
+          <div class="text-4xl mb-4">🫀</div>
+          <h3 class="font-display text-2xl text-slate-800 mb-2">A Healer's Heart</h3>
+          <p class="text-slate-600 leading-relaxed">You have best heart and soul, Allah give you best heart and soul, and you will be the best doctor Insha'Allah.</p>
+        </div>
+
+        <div class="reveal-hidden glass rounded-3xl p-8 border border-white/60 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-shine" style="transition-delay: 0.1s">
+          <div class="text-4xl mb-4">🌙</div>
+          <h3 class="font-display text-2xl text-slate-800 mb-2">Late Nights, Early Mornings</h3>
+          <p class="text-slate-600 leading-relaxed">The sleepless shifts, the endless rounds — you give so much of yourself. The world is lucky to have you in that white coat.</p>
+        </div>
+
+        <div class="reveal-hidden glass rounded-3xl p-8 border border-white/60 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-shine sm:col-span-2 lg:col-span-1" style="transition-delay: 0.2s">
+          <div class="text-4xl mb-4">✨</div>
+          <h3 class="font-display text-2xl text-slate-800 mb-2">Strength & Grace</h3>
+          <p class="text-slate-600 leading-relaxed">You handle pressure with a calm that inspires everyone around you. Strong, brilliant, and impossibly kind. <br>Apku kitna bhi Gussa ande ap utna jadhi bahar nai padti g that is yours patience, sirf apku samaj karleyte so walo kuch malum hotha ap ka moods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best friend section -->
+  <section class="relative z-10 py-20 px-6 bg-gradient-to-b from-transparent via-medical-50/50 to-transparent">
+    <div class="max-w-4xl mx-auto">
+      <div class="reveal-hidden glass rounded-[2rem] p-10 sm:p-14 border border-white/70 shadow-xl text-center relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-rose-200/30 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-medical-200/30 rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <span class="text-5xl mb-6 block animate-wiggle inline-block">🤝</span>
+          <h2 class="font-display text-4xl sm:text-5xl text-slate-800 mb-6">
+            My Favourite Person<br />
+            <span class="text-gradient italic">in Scrubs</span>
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto mb-4">
+            Before the stethoscope, before the degree, before everything —
+            you were my best friend. And honestly That's still the title I'm most proud of.
+          </p>
+          <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            You've listened to my nonsense, and stood by me through everything.
+            Today I just want you to know — <em class="text-rose-500 font-medium">you matter to me more than words on a screen can say.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dua section -->
+  <section class="relative z-10 py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal-hidden relative overflow-hidden rounded-[2rem] border border-emerald-200/40 shadow-xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/90 via-white/80 to-medical-50/90"></div>
+        <div class="absolute top-0 right-0 w-48 h-48 bg-emerald-200/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-56 h-56 bg-medical-200/20 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 px-8 sm:px-14 py-12 sm:py-16 text-center">
+          <span class="text-5xl mb-5 block animate-pulse-soft">🤲</span>
+          
+          <p class="text-emerald-700/80 font-semibold tracking-widest uppercase text-xs sm:text-sm mb-4">
+            Meri Dua ko Ameen, summa Ameen bolo g <br>
+            A Prayer From My Heart
+          </p>
+          <h2 class="font-display text-3xl sm:text-4xl text-slate-800 mb-6 leading-snug">
+            Every Time I Make <span class="text-gradient italic">Dua</span>
+          </h2>
+          <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-6">
+            I ask Allah to give his healing miracle through your hands (your treatment) to the people 
+            <br>
+            aur ap ek famous doctor hona bolke (Insha'Allah).
+            <em class="text-emerald-700 font-medium not-italic">Ameen.</em>
+          </p>
+          <p class="font-display text-xl sm:text-2xl text-slate-700 italic leading-relaxed">
+            "May Allah use you as a means of shifa for everyone you touch."
+          </p>
+          <p class="mt-6 text-sm text-emerald-600/70 font-medium tracking-wide">
+            بإذن الله · Insha'Allah
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline / moments -->
+  <section class="relative z-10 py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal-hidden">
+        <h2 class="font-display text-4xl text-slate-800">Little Things I Notice</h2>
+        <p class="text-slate-500 mt-2">About the most amazing doctor I know</p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="reveal-hidden flex gap-5 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-medical-100 flex items-center justify-center text-xl">😊</div>
+          <div class="glass rounded-2xl p-5 flex-1 border border-white/60 shadow-sm">
+            <p class="text-slate-700">The way your eyes light up when you talk about helping someone get better.</p>
+          </div>
+        </div>
+        <div class="reveal-hidden flex gap-5 items-start" style="transition-delay: 0.1s">
+          <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center text-xl">☕</div>
+          <div class="glass rounded-2xl p-5 flex-1 border border-white/60 shadow-sm">
+            <p class="text-slate-700">How you still make time for our late-night talks, even after the longest shifts.</p>
+          </div>
+        </div>
+        <div class="reveal-hidden flex gap-5 items-start" style="transition-delay: 0.2s">
+          <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-medical-100 flex items-center justify-center text-xl">🌟</div>
+          <div class="glass rounded-2xl p-5 flex-1 border border-white/60 shadow-sm">
+            <p class="text-slate-700">That you're brilliant enough to save lives, but humble enough to never make it about you.</p>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- The wish / closing -->
+  <section class="relative z-10 py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center reveal-hidden">
+      <div class="inline-block mb-6">
+        <svg class="w-32 h-32 mx-auto animate-spin-slow opacity-80" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="45" stroke="url(#grad)" stroke-width="1.5" stroke-dasharray="4 6" fill="none"/>
+          <text x="50" y="55" text-anchor="middle" font-size="28">💕</text>
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0ea5e9"/>
+              <stop offset="100%" stop-color="#f43f7a"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-5xl text-slate-800 mb-6 leading-snug">
+        Wishing You a Day<br />
+        as Beautiful as <span class="text-gradient italic">You</span>
+      </h2>
+
+      <p class="text-lg text-slate-600 leading-relaxed mb-8">
+        May today remind you of how many lives you've touched — mine included.
+        Keep being the incredible doctor and the incredible human you are.
+        The world needs you. <span class="text-rose-500 font-medium">And so do I.</span>
+      </p>
+
+      <div class="glass rounded-3xl p-8 border border-rose-200/50 shadow-lg inline-block">
+        <p class="font-display text-2xl sm:text-3xl text-slate-700 italic leading-relaxed">
+          "You're not just my best friend.<br />
+          You're the person I secretly hope<br />
+          every day turns out a little like —
+          <span class="text-gradient not-italic font-semibold">wonderful, warm, and you."</span>
+        </p>
+      </div>
+
+      <p class="mt-10 text-slate-500 text-sm">
+        With all my heart, today and always 💙
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-10 text-center text-slate-400 text-sm border-t border-slate-200/50">
+    <p>Made with love for the best doctor in the world 🩺</p>
+    <p class="mt-1">Doctors' Day · July 1, 2026</p>
+  </footer>
+
+  <!-- Wish Modal -->
+  <div id="wishModal" class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-slate-900/40 backdrop-blur-sm">
+    <div class="glass rounded-3xl max-w-md w-full p-10 text-center shadow-2xl border border-white/80 transform scale-95 opacity-0 transition-all duration-500" id="wishCard">
+      <div class="text-6xl mb-4 animate-heartbeat">💌</div>
+      <h3 class="font-display text-3xl text-slate-800 mb-4">My Dear <span id="modalName"> Dr. Riah_420</span>,</h3>
+      <p class="text-slate-600 leading-relaxed mb-6">
+        Your musical voice is only best treatment for me, Jab Jab merku bhi thoda Dopamine ka treatment karro g.
+      </p>
+      <p class="text-slate-600 leading-relaxed mb-8">
+        Thank you for being my best friend.<br />
+        Thank you for being <em class="text-rose-500">you</em>.<br />
+        Happy Doctors' Day! 🩺✨
+      </p>
+      <button
+        onclick="closeWish()"
+        class="px-8 py-3 rounded-full bg-gradient-to-r from-medical-500 to-rose-500 text-white font-semibold hover:scale-105 transition-transform shadow-lg"
+      >
+        Close with a smile 😊
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ✏️ Personalize her name here
+    const HER_NAME = 'Dr. Riah_420';
+
+    // document.getElementById('heroName').textContent = HER_NAME;
+    document.getElementById('modalName').textContent = HER_NAME;
+    document.title = `Happy Doctors' Day, ${HER_NAME} 🩺💕`;
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal-hidden');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach((el) => observer.observe(el));
+
+    // Modal
+    function openWish() {
+      const modal = document.getElementById('wishModal');
+      const card = document.getElementById('wishCard');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      launchConfetti();
+      requestAnimationFrame(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      });
+    }
+
+    function closeWish() {
+      const modal = document.getElementById('wishModal');
+      const card = document.getElementById('wishCard');
+      card.classList.add('scale-95', 'opacity-0');
+      card.classList.remove('scale-100', 'opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    }
+
+    document.getElementById('wishModal').addEventListener('click', (e) => {
+      if (e.target.id === 'wishModal') closeWish();
+    });
+
+    // Confetti
+    function launchConfetti() {
+      const colors = ['#0ea5e9', '#f43f7a', '#38bdf8', '#ff9ebb', '#7dd3fc', '#ffc9d9'];
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 4000);
+        }, i * 40);
+      }
+    }
+  </script>
+</body>
+</html>
